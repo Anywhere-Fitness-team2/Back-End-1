@@ -1,0 +1,19 @@
+{
+  "name": "Back-End",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Anywhere-Fitness-2-BW/Back-End.git",
+  "author": "Sunil Karki <karkisunil1200@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.21.1",
+    "sqlite3": "^4.2.0"
+  },
+  "scripts": {
+    "server": "nodemon index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
