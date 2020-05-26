@@ -1,4 +1,4 @@
-// const pgConnection = process.env.DATABASE_URL || 'postgresql://postgres@localhost/auth';
+const pgConnection = process.env.DATABASE_URL || 'postgresql://postgres@localhost/auth';
 
 module.exports = {
   development: {
@@ -34,18 +34,13 @@ module.exports = {
   },
 
   production: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user: 'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
+    client: 'pg',
+    connection: pgConnection,
     migrations: {
-      tableName: 'knex_migrations'
+      directory: './data/migrations'
+    },
+    seeds: {
+      directory: './data/seeds'
     }
   }
 };
