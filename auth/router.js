@@ -27,7 +27,7 @@ router.post('/register', (req, res) => {
       });
   } else {
     res.status(400).json({
-      message: 'please provide username and password and the password'
+      message: 'please provide username and password'
     });
   }
 });
@@ -39,6 +39,7 @@ router.post('/login', (req, res) => {
     Users.findBy({username})
       .then(([user]) => {
         if (user && bcryptjs.compareSync(password, user.password)) {
+          console.log('users ==> ', user);
           const token = generateToken(user);
           res.status(200).json({message: 'logged in', token});
         }

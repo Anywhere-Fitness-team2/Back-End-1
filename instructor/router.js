@@ -1,10 +1,14 @@
 const express = require('express');
 const Class = require('./instructor-model');
-const restricted = require('../auth/instructor-middleware');
+const {checkInstructor} = require('../auth/instructor-middleware');
+const restricted = require('../auth/restricted-middleware');
 
 const router = express.Router();
 
-router.post('/', (req, res) => {
+// router.use(restricted);
+// router.use(checkInstructor);
+
+router.post('/', [restricted, checkInstructor], (req, res) => {
   const data = req.body;
 
   Class.addClass(data)
@@ -15,5 +19,7 @@ router.post('/', (req, res) => {
       res.status(500).json({message: 'could not add', error: err.message});
     });
 });
+
+
 
 module.exports = router;

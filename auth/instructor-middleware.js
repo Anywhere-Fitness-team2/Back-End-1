@@ -3,6 +3,7 @@ module.exports = {
 };
 
 function checkInstructor(req, res, next) {
+  // console.log(req.jwt);
   if (req.jwt && req.jwt.role === 1) {
     next();
   } else {

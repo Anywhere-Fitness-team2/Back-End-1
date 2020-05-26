@@ -16,7 +16,6 @@ exports.up = function(knex) {
     tbl
       .string('type')
       .notNullable()
-      .unique()
       .index();
 
     tbl
