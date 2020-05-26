@@ -7,12 +7,12 @@ const router = express.Router();
 router.use(restricted);
 
 router.get('/', (req, res) => {
-  Users.getUsers()
-    .then(users => {
-      res.status(200).json({data: users});
+  Users.getClass()
+    .then(classes => {
+      res.status(200).json({data: classes});
     })
     .catch(err => {
-      res.status(500).json({message: err.message});
+      res.status(500).json({message: 'Could not fetch classes', error: err.message});
     });
 });
 

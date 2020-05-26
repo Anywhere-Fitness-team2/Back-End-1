@@ -3,9 +3,14 @@ exports.up = function(knex) {
     tbl.increments();
 
     tbl
-      .string('instructor_name')
+      .string('name')
       .notNullable()
       .unique()
+      .index();
+
+    tbl
+      .string('instructor_name')
+      .notNullable()
       .index();
 
     tbl
