@@ -1,8 +1,7 @@
 const db = require('../data/dbConfig');
 
 module.exports = {
-  addClass,
-  getClass
+  addClass
 };
 
 function addClass(data) {

@@ -1,6 +1,7 @@
 const express = require('express');
 const authRouter = require('../auth/router');
 const userRouter = require('../users/router');
+const instructorRouter = require('../instructor/router');
 
 const server = express();
 
@@ -12,5 +13,6 @@ server.get('/', (req, res) => {
 
 server.use('/api/auth', authRouter);
 server.use('/api/auth/classes', userRouter);
+server.use('/api/auth/instructor', instructorRouter);
 
 module.exports = server;
