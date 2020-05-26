@@ -37,4 +37,20 @@ router.put('/:id', (req, res) => {
     });
 });
 
+router.delete('/:id', (req, res) => {
+  const {id} = req.params;
+
+  Class.removeClass(id)
+    .then(clas => {
+      if (clas) {
+        res.status(200).json({data: clas});
+      } else {
+        res.status(404).json({error: 'please provide correct id'});
+      }
+    })
+    .catch(err => {
+      res.status(500).json({message: 'Error deleting class'});
+    });
+});
+
 module.exports = router;
