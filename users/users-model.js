@@ -1,12 +1,17 @@
 const db = require('../data/dbConfig');
 
 module.exports = {
-  addUser
+  addUser,
+  getUsers
 };
 
 function addUser(user) {
   return db
     .select('*')
-    .from('users')
+    .from('user')
     .insert(user);
+}
+
+function getUsers() {
+  return db.select('*').from('user');
 }
