@@ -5,10 +5,10 @@ const restricted = require('../auth/restricted-middleware');
 
 const router = express.Router();
 
-// router.use(restricted);
-// router.use(checkInstructor);
+router.use(restricted);
+router.use(checkInstructor);
 
-router.post('/', [restricted, checkInstructor], (req, res) => {
+router.post('/', (req, res) => {
   const data = req.body;
 
   Class.addClass(data)
@@ -20,6 +20,21 @@ router.post('/', [restricted, checkInstructor], (req, res) => {
     });
 });
 
+router.put('/:id', (req, res) => {
+  const changes = req.body;
+  const {id} = req.params;
 
+  Class.updateClass(id, changes)
+    .then(clas => {
+      if (clas) {
+        res.status(200).json({data: clas});
+      } else {
+        res.status(404).json({error: 'please provide right information'});
+      }
+    })
+    .catch(err => {
+      res.status(500).json({message: 'There was an error updating', error: err.message});
+    });
+});
 
 module.exports = router;
