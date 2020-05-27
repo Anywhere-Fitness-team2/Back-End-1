@@ -61,6 +61,20 @@ router.get('/location', (req, res) => {
     });
 });
 
+router.get('/duration', (req, res) => {
+  const {duration} = req.body;
+
+  Users.getByDuration(duration)
+    .then(clas => {
+      if (clas) {
+        res.status(200).json({data: clas});
+      }
+    })
+    .catch(err => {
+      res.status(500).json({error: 'Error fetching data'});
+    });
+});
+
 router.get('/:id', (req, res) => {
   const {id} = req.params;
 
@@ -73,7 +87,7 @@ router.get('/:id', (req, res) => {
       }
     })
     .catch(err => {
-      res.status(500).json({message: 'Error getting class'});
+      res.status(500).json({message: 'Error getting class', error: err.message});
     });
 });
 

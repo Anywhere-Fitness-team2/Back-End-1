@@ -8,7 +8,8 @@ module.exports = {
   getClassType,
   getClass,
   getIntensity,
-  getByLocation
+  getByLocation,
+  getByDuration
 };
 
 function addUser(user) {
@@ -60,4 +61,11 @@ function getByLocation(location) {
     .select('*')
     .from('class')
     .where({location});
+}
+
+function getByDuration(duration) {
+  return db
+    .select('*')
+    .from('class')
+    .where({duration});
 }
