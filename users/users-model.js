@@ -4,6 +4,8 @@ module.exports = {
   addUser,
   getUsers,
   findBy,
+  getClassById,
+  getClassType,
   getClass
 };
 
@@ -27,4 +29,20 @@ function findBy(user) {
 
 function getClass() {
   return db.select('*').from('class');
+}
+
+function getClassById(id) {
+  return db
+    .select('*')
+    .from('class')
+    .where({id})
+    .first();
+}
+
+function getClassType(type) {
+  return db
+    .select('*')
+    .from('class as c')
+    .join('type', 'c.type_id', 't.id')
+    .where('name', type);
 }

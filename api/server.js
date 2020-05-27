@@ -12,7 +12,7 @@ server.get('/', (req, res) => {
 });
 
 server.use('/api/auth', authRouter);
-server.use('/api/auth/classes', userRouter);
-server.use('/api/auth/instructor', instructorRouter);
+server.use('/api/auth/users/classes', userRouter);
+server.use('/api/auth/instructor/classes', instructorRouter);
 
 module.exports = server;

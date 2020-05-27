@@ -8,32 +8,32 @@ exports.seed = function(knex) {
         {
           id: 1,
           name: 'pure yoga',
-          instructor_name: 'subash',
-          type: 'yoga',
+          instructor_id: 2,
+          type_id: '3',
           intensity: 'high',
           location: 'vegas',
-          max_size: 2,
+          max_size: 22,
           duration: 1.0
         },
         {
           id: 2,
           name: 'meditation',
-          instructor_name: 'sunil',
-          type: 'london',
+          instructor_id: '1',
+          type_id: '2',
           intensity: 'low',
           location: 'birmingham',
-          max_size: 2,
-          duration: 1.0
+          max_size: 12,
+          duration: 2.4
         },
         {
           id: 3,
-          name: 'cardio',
-          instructor_name: 'kate',
-          type: 'cardio',
+          name: 'cardio running',
+          instructor_id: '3',
+          type_id: '1',
           intensity: 'medium',
           location: 'japan',
-          max_size: 2,
-          duration: 1.0
+          max_size: 21,
+          duration: 1.13
         }
       ]);
     });

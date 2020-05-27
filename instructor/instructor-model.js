@@ -2,7 +2,6 @@ const db = require('../data/dbConfig');
 
 module.exports = {
   addClass,
-  getClassById,
   updateClass,
   removeClass
 };
@@ -16,14 +15,6 @@ function addClass(data) {
 
 function getClass() {
   return db.select('*').from('class');
-}
-
-function getClassById(id) {
-  return db
-    .select('*')
-    .from('class')
-    .where({id})
-    .first();
 }
 
 function updateClass(id, changes) {

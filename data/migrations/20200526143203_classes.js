@@ -9,14 +9,22 @@ exports.up = function(knex) {
       .index();
 
     tbl
-      .string('instructor_name')
+      .integer('instructor_id')
       .notNullable()
-      .index();
+      .unique()
+      .references('id')
+      .inTable('instructor')
+      .onDelete('RESTRICT')
+      .onUpdate('CASCADE');
 
     tbl
-      .string('type')
+      .integer('type_id')
       .notNullable()
-      .index();
+      .unique()
+      .references('id')
+      .inTable('type')
+      .onDelete('RESTRICT')
+      .onUpdate('CASCADE');
 
     tbl
       .string('intensity')
@@ -31,6 +39,7 @@ exports.up = function(knex) {
     tbl.integer('max_size').notNullable();
     tbl.float('duration').notNullable();
     tbl.bool('signedUp').defaultTo('false');
+    tbl.integer('current_members').defaultTo(0);
   });
 };
 
