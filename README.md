@@ -22,4 +22,15 @@ classes wherever they might be held.
 
 ### **_Additional athunetication for Instructor_**
 
-| Method | Endpoint | Body (required) | Body (optional) | Notes
+| Method               | Endpoint                 | Body (required)                                                                | Body (optional) | Notes                                      |
+| -------------------- | ------------------------ | ------------------------------------------------------------------------------ | --------------- | ------------------------------------------ |
+| Add class POST       | /api/auth/instructor     | name, instructor_name, type, intensity, location, max_size, duration, signedUp | N/A             | Creates a new class object in the database |
+| Update Class PUT     | /api/auth/instructor/:id | any of the field                                                               | N/A             | Updates the class with given Id            |
+| Removes Class DELETE | /api/auth/instructor/:id | any of the field                                                               | N/A             | Deletes the class with given Id            |
+
+### **_Endpoints for the Users_**
+
+| Method                | Endpoint                    | Body (required) | Body (optional) | Notes                                     |
+| --------------------- | --------------------------- | --------------- | --------------- | ----------------------------------------- |
+| get classes GET       | /api/auth/users/classes     | N/A             | N/A             | Fetches all the classes from the database |
+| get classed by Id GET | /api/auth/users/classes/:id | N/A             | N/A             | Fetches the class with given Id.          |
