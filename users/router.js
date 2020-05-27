@@ -36,10 +36,28 @@ router.get('/intensity', (req, res) => {
     .then(level => {
       if (level) {
         res.status(200).json({data: level});
+      } else {
+        res.status(404).json({message: 'please choose between low, high or medium'});
       }
     })
     .catch(err => {
       res.status(500).json({message: 'Failed to fetch data', error: err.message});
+    });
+});
+
+router.get('/location', (req, res) => {
+  const {location} = req.body;
+
+  Users.getByLocation(location)
+    .then(clas => {
+      if (clas) {
+        res.status(200).json({data: clas});
+      } else {
+        res.status(404).json({error: 'could not find location'});
+      }
+    })
+    .catch(err => {
+      res.status(500).json({message: 'Error loading data', error: err.message});
     });
 });
 
