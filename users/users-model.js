@@ -9,7 +9,8 @@ module.exports = {
   getClass,
   getIntensity,
   getByLocation,
-  getByDuration
+  getByDuration,
+  getByInstructor
 };
 
 function addUser(user) {
@@ -70,10 +71,9 @@ function getByDuration(duration) {
     .where({duration});
 }
 
-// function getByInstructor(instructor) {
-//   return db
-//     .select('*')
-//     .from('class as c')
-
-//     .
-// }
+function getByInstructor(instructor_name) {
+  return db
+    .select('*')
+    .from('class')
+    .where({instructor_name});
+}

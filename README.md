@@ -30,7 +30,11 @@ classes wherever they might be held.
 
 ### **_Endpoints for the Users_**
 
-| Method                | Endpoint                    | Body (required) | Body (optional) | Notes                                     |
-| --------------------- | --------------------------- | --------------- | --------------- | ----------------------------------------- |
-| get classes GET       | /api/auth/users/classes     | N/A             | N/A             | Fetches all the classes from the database |
-| get classed by Id GET | /api/auth/users/classes/:id | N/A             | N/A             | Fetches the class with given Id.          |
+| Method                       | Endpoint                           | Body (required) | Body (optional) | Notes                                                                   |
+| ---------------------------- | ---------------------------------- | --------------- | --------------- | ----------------------------------------------------------------------- |
+| get classes GET              | /api/auth/users/classes            | N/A             | N/A             | Fetches all the classes from the database                               |
+| get classes by Id GET        | /api/auth/users/classes/:id        | id              | N/A             | Fetches the class with given Id.                                        |
+| get classes by Location GET  | /api/auth/ausers/classes/location  | location        | N/A             | Gets all the class in that location                                     |
+| get classes by intensity GET | /api/auth/ausers/classes/intensity | intensity       | N/A             | Gets all the class in that intensity. String "low", "medium", or "high" |
+| get classes by duration GET  | /api/auth/ausers/classes/duration  | duration        | N/A             | Gets all the class in that duration. Has to be double                   |
+| get classes by type GET      | /api/auth/ausers/classes/type      | type            | N/A             | Gets all the class in that type. Has to be string                       |

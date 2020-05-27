@@ -76,9 +76,9 @@ router.get('/duration', (req, res) => {
 });
 
 router.get('/instructor', (req, res) => {
-  const {instructor} = req.body;
+  const {instructor_name} = req.body;
 
-  Users.getByInstructor(instructor)
+  Users.getByInstructor(instructor_name)
     .then(clas => {
       if (clas) {
         res.status(200).json({data: clas});
