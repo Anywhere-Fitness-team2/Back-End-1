@@ -6,7 +6,8 @@ module.exports = {
   findBy,
   getClassById,
   getClassType,
-  getClass
+  getClass,
+  getIntensity
 };
 
 function addUser(user) {
@@ -42,7 +43,13 @@ function getClassById(id) {
 function getClassType(type) {
   return db
     .select('*')
-    .from('class as c')
-    .join('type', 'c.type_id', 't.id')
-    .where('name', type);
+    .from('class')
+    .where('class.type', '=', `${type}`);
+}
+
+function getIntensity(intensity) {
+  return db
+    .select('*')
+    .from('class')
+    .where({intensity});
 }

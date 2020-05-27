@@ -16,6 +16,33 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/type', (req, res) => {
+  const {type} = req.body;
+  console.log(type);
+
+  Users.getClassType(type)
+    .then(clas => {
+      res.status(200).json({data: clas});
+    })
+    .catch(err => {
+      res.status(500).json({message: 'Error fetching type', error: err.message});
+    });
+});
+
+router.get('/intensity', (req, res) => {
+  const {intensity} = req.body;
+
+  Users.getIntensity(intensity)
+    .then(level => {
+      if (level) {
+        res.status(200).json({data: level});
+      }
+    })
+    .catch(err => {
+      res.status(500).json({message: 'Failed to fetch data', error: err.message});
+    });
+});
+
 router.get('/:id', (req, res) => {
   const {id} = req.params;
 
@@ -29,18 +56,6 @@ router.get('/:id', (req, res) => {
     })
     .catch(err => {
       res.status(500).json({message: 'Error getting class'});
-    });
-});
-
-router.get('/type', (req, res) => {
-  const type = req.body;
-
-  Users.getClassType(type)
-    .then(clas => {
-      res.status(200).json({data: clas});
-    })
-    .catch(err => {
-      res.status(500).json({message: 'Error fetching type', error: err.message});
     });
 });
 

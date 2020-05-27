@@ -17,14 +17,7 @@ exports.up = function(knex) {
       .onDelete('RESTRICT')
       .onUpdate('CASCADE');
 
-    tbl
-      .integer('type_id')
-      .notNullable()
-      .unique()
-      .references('id')
-      .inTable('type')
-      .onDelete('RESTRICT')
-      .onUpdate('CASCADE');
+    tbl.string('type').notNullable();
 
     tbl
       .string('intensity')
