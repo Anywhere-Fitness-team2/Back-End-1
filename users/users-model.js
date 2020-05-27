@@ -10,7 +10,8 @@ module.exports = {
   getIntensity,
   getByLocation,
   getByDuration,
-  getByInstructor
+  getByInstructor,
+  myClass
 };
 
 function addUser(user) {
@@ -76,4 +77,11 @@ function getByInstructor(instructor_name) {
     .select('*')
     .from('class')
     .where({instructor_name});
+}
+
+function myClass() {
+  return db
+    .select('*')
+    .from('class')
+    .where({signedUp: 1});
 }
