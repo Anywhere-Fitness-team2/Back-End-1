@@ -75,6 +75,22 @@ router.get('/duration', (req, res) => {
     });
 });
 
+router.get('/instructor', (req, res) => {
+  const {instructor} = req.body;
+
+  Users.getByInstructor(instructor)
+    .then(clas => {
+      if (clas) {
+        res.status(200).json({data: clas});
+      } else {
+        res.status(404).json({message: 'could not find class by instructor'});
+      }
+    })
+    .catch(err => {
+      res.status(500).json({message: 'Error fetching instructor'});
+    });
+});
+
 router.get('/:id', (req, res) => {
   const {id} = req.params;
 

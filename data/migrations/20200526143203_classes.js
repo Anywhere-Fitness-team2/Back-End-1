@@ -8,19 +8,17 @@ exports.up = function(knex) {
       .unique()
       .index();
 
-    tbl
-      .integer('instructor_id')
-      .notNullable()
-      .unique()
-      .references('id')
-      .inTable('instructor')
-      .onDelete('RESTRICT')
-      .onUpdate('CASCADE');
+    tbl.string('instructor_name').notNullable();
 
     tbl.string('type').notNullable();
 
     tbl
       .string('intensity')
+      .notNullable()
+      .index();
+
+    tbl
+      .string('date')
       .notNullable()
       .index();
 

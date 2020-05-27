@@ -17,13 +17,7 @@ exports.up = function(knex) {
 
     tbl.string('password').notNullable();
 
-    tbl
-      .integer('role_id')
-      .notNullable()
-      .references('id')
-      .inTable('roles')
-      .onDelete('RESTRICT')
-      .onUpdate('CASCADE');
+    tbl.string('role').notNullable();
   });
 };
 

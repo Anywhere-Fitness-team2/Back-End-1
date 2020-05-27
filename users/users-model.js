@@ -69,3 +69,11 @@ function getByDuration(duration) {
     .from('class')
     .where({duration});
 }
+
+// function getByInstructor(instructor) {
+//   return db
+//     .select('*')
+//     .from('class as c')
+
+//     .
+// }
