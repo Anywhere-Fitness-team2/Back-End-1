@@ -3,9 +3,11 @@ const authRouter = require('../auth/router');
 const userRouter = require('../users/router');
 const instructorRouter = require('../instructor/router');
 const cors = require('cors');
+const helmet = require('helmet');
 
 const server = express();
 
+server.use(helmet());
 server.use(cors());
 server.use(express.json());
 

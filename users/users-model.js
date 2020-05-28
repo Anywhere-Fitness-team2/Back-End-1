@@ -11,7 +11,7 @@ module.exports = {
   getByLocation,
   getByDuration,
   getByInstructor,
-  myClass
+  addFavorite
 };
 
 function addUser(user) {
@@ -79,9 +79,11 @@ function getByInstructor(instructor_name) {
     .where({instructor_name});
 }
 
-function myClass() {
+function addFavorite(id) {
   return db
     .select('*')
-    .from('class')
-    .where({signedUp: 1});
+    .from('class as c')
+    .join('favorite as f ', 'f.class_id', 'c.id')
+    .join('user as u', 'u.id', 'f.id')
+    .where('u.id', '=', `${id}`, 'c.signedUp', '=', true);
 }

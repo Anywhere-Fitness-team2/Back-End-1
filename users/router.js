@@ -91,10 +91,10 @@ router.get('/instructor', (req, res) => {
     });
 });
 
-router.get('/favorite', (req, res) => {
+router.post('/favorite', (req, res) => {
   const {id} = req.params;
 
-  Users.getClass(id)
+  Users.addFavorite(id)
     .then(clas => {
       if (clas) {
         res.status(200).json({data: clas});
