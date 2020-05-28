@@ -76,7 +76,7 @@ test('/DELETE /api/auth/instructor/classes/:id', async () => {
 //     .send({username: 'sun', password: 'sun'});
 
 //   const response = request('server')
-//     .update('/api/auth/instructor/classes/5')
+//     .put('/api/auth/instructor/classes/5')
 //     .send({
 //       name: 'cycling cardio',
 //       instructor_name: 'chris',

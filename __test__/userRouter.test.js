@@ -55,28 +55,3 @@ test('GET /api/auth/users/classes/type', async () => {
   expect(response.status).toBe(200);
   expect.arrayContaining(response.body);
 });
-
-test('GET, /api/auth/users/classes/intensity', async () => {
-  const register = await request(server)
-    .post('/api/auth/register')
-    .send({
-      name: 'sun',
-      email: 'sun@gmail.com',
-      username: 'sun',
-      password: 'sun',
-      role: 'client'
-    });
-
-  const login = await request(server)
-    .post('/api/auth/login')
-    .send({username: 'sun', password: 'sun'});
-
-  const response = await request(server)
-    .get('api/auth/users/classes/intensity')
-    .send({intensity: 'medium'})
-    .set('authorization', login.body.token);
-
-  console.log(response);
-
-  expect(response.status).toBe(200);
-});
