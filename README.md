@@ -24,11 +24,11 @@ classes wherever they might be held.
 
 ### **_Additional athunetication for Instructor_**
 
-| Method               | Endpoint                 | Body (required)                                                                     | Body (optional) | Notes                                                                                                                                                    |
-| -------------------- | ------------------------ | ----------------------------------------------------------------------------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Add class POST       | /api/auth/instructor     | name, instructor_name, type, intensity,location, date, max_size, duration, signedUp | N/A             | Creates a new class object in the database. Date has to string in "04/19/2020" format. Duration is a float and signedUp is a boolean(false as a default) |
-| Update Class PUT     | /api/auth/instructor/:id | any of the field                                                                    | N/A             | Updates the class with given Id                                                                                                                          |
-| Removes Class DELETE | /api/auth/instructor/:id | any of the field                                                                    | N/A             | Deletes the class with given Id                                                                                                                          |
+| Method               | Endpoint                         | Body (required)                                                                     | Body (optional) | Notes                                                                                                                                                    |
+| -------------------- | -------------------------------- | ----------------------------------------------------------------------------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Add class POST       | /api/auth/instructor/classes     | name, instructor_name, type, intensity,location, date, max_size, duration, signedUp | N/A             | Creates a new class object in the database. Date has to string in "04/19/2020" format. Duration is a float and signedUp is a boolean(false as a default) |
+| Update Class PUT     | /api/auth/instructor/classes/:id | any of the field                                                                    | N/A             | Updates the class with given Id                                                                                                                          |
+| Removes Class DELETE | /api/auth/instructor/classes/:id | any of the field                                                                    | N/A             | Deletes the class with given Id                                                                                                                          |
 
 ### **_Endpoints for the Users_**
 

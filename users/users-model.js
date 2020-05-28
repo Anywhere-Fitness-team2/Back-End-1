@@ -11,7 +11,8 @@ module.exports = {
   getByLocation,
   getByDuration,
   getByInstructor,
-  addFavorite
+  addFavorite,
+  getFavoriteClass
 };
 
 function addUser(user) {
@@ -79,11 +80,18 @@ function getByInstructor(instructor_name) {
     .where({instructor_name});
 }
 
-function addFavorite(id) {
+function addFavorite(user_id, class_id) {
+  return db('user_classes')
+    .insert({user_id, class_id})
+    .then(() => {
+      return getClassById(user_id);
+    });
+}
+
+function getFavoriteClass({user_id}) {
   return db
     .select('*')
-    .from('class as c')
-    .join('favorite as f ', 'f.class_id', 'c.id')
-    .join('user as u', 'u.id', 'f.id')
-    .where('u.id', '=', `${id}`, 'c.signedUp', '=', true);
+    .from('user_classes')
+    .join('user', 'user.id', 'user_classes.user_id')
+    .where('user.id', '=', `${user_id}`);
 }

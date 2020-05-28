@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 
 router.get('/type', (req, res) => {
   const {type} = req.body;
-  console.log(type);
+  // console.log(type);
 
   Users.getClassType(type)
     .then(clas => {
@@ -34,6 +34,7 @@ router.get('/intensity', (req, res) => {
 
   Users.getIntensity(intensity)
     .then(level => {
+      console.log(level);
       if (level) {
         res.status(200).json({data: level});
       } else {
@@ -91,10 +92,11 @@ router.get('/instructor', (req, res) => {
     });
 });
 
-router.post('/favorite', (req, res) => {
-  const {id} = req.params;
+router.post('/:id/favorite', (req, res) => {
+  const {class_id} = req.body;
+  const user_id = req.params.id;
 
-  Users.addFavorite(id)
+  Users.addFavorite(user_id, class_id)
     .then(clas => {
       if (clas) {
         res.status(200).json({data: clas});
@@ -104,6 +106,18 @@ router.post('/favorite', (req, res) => {
     })
     .catch(err => {
       res.status(500).json({message: err.message});
+    });
+});
+
+router.get('/:id/classes', (req, res) => {
+  const user_id = req.params.id;
+
+  Users.getFavoriteClass(user_id)
+    .then(clas => {
+      res.status(200).json({data: clas});
+    })
+    .catch(err => {
+      res.status(500).json({error: err.message});
     });
 });
 
