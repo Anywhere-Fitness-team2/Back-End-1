@@ -22,10 +22,10 @@ router.get('/type', (req, res) => {
 
   Users.getClassType(type)
     .then(clas => {
-      if (clas) {
+      if (clas.length > 0) {
         res.status(200).json({data: clas});
       } else {
-        res.status(404).json({errr: 'there is a big error'});
+        res.status(400).json({errr: 'there is a big error'});
       }
     })
     .catch(err => {
@@ -38,11 +38,10 @@ router.get('/intensity', (req, res) => {
 
   Users.getIntensity(intensity)
     .then(level => {
-      console.log(level);
-      if (level) {
+      if (level.length > 0) {
         res.status(200).json({data: level});
       } else {
-        res.status(404).json({message: 'please choose between low, high or medium'});
+        res.status(400).json({message: 'please choose between low, high or medium'});
       }
     })
     .catch(err => {
@@ -58,7 +57,7 @@ router.get('/location', (req, res) => {
       if (clas) {
         res.status(200).json({data: clas});
       } else {
-        res.status(404).json({error: 'could not find location'});
+        res.status(400).json({error: 'could not find location'});
       }
     })
     .catch(err => {
@@ -73,6 +72,8 @@ router.get('/duration', (req, res) => {
     .then(clas => {
       if (clas) {
         res.status(200).json({data: clas});
+      } else {
+        res.status(400).json({message: 'error'});
       }
     })
     .catch(err => {
@@ -85,7 +86,7 @@ router.get('/instructor', (req, res) => {
 
   Users.getByInstructor(instructor_name)
     .then(clas => {
-      if (clas) {
+      if (clas.length) {
         res.status(200).json({data: clas});
       } else {
         res.status(404).json({message: 'could not find class by instructor'});
@@ -125,20 +126,20 @@ router.get('/:id/classes', (req, res) => {
     });
 });
 
-router.get('/:id', (req, res) => {
-  const {id} = req.params;
+// router.get('/:id', (req, res) => {
+//   const {id} = req.params;
 
-  Users.getClassById(id)
-    .then(clas => {
-      if (clas) {
-        res.status(200).json({data: clas});
-      } else {
-        res.status(404).json({error: 'please check the Id'});
-      }
-    })
-    .catch(err => {
-      res.status(500).json({message: 'Error getting class', error: err.message});
-    });
-});
+//   Users.getClassById(id)
+//     .then(clas => {
+//       if (clas) {
+//         res.status(200).json({data: clas});
+//       } else {
+//         res.status(404).json({error: 'please check the Id'});
+//       }
+//     })
+//     .catch(err => {
+//       res.status(500).json({message: 'Error getting class', error: err.message});
+//     });
+// });
 
 module.exports = router;
