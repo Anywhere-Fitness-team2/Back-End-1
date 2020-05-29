@@ -37,6 +37,7 @@ test('POST /api/auth/instructor/classes', async () => {
       duration: 1.2
     });
   expect(response.status).toBe(200);
+  expect.arrayContaining(response.body);
 });
 
 test('/DELETE /api/auth/instructor/classes/:id', async () => {
@@ -87,7 +88,9 @@ test('UPDATE /api/auth/instructor/classes/:id', async () => {
       max_size: 15,
       duration: 1.2
     })
+
     .set('authorization', login.body.token);
 
   expect(response._data).toMatchObject({location: 'italy'});
+  expect(response._data).toMatchObject({type: 'cardio'});
 });

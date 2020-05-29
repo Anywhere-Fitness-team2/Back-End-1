@@ -29,6 +29,7 @@ test('GET /api/auth/users/classes', async () => {
     .set('authorization', login.body.token);
 
   expect(response.status).toBe(200);
+  expect.arrayContaining(response.body);
 });
 
 test('GET /api/auth/users/classes/type', async () => {
@@ -51,10 +52,8 @@ test('GET /api/auth/users/classes/type', async () => {
     .send({type: 'yoga'})
     .set('authorization', login.body.token);
 
-  //   console.log(response);
-
   expect(response.status).toBe(200);
-  // expect.arrayContaining(response.body);
+  expect.arrayContaining(response.body);
 });
 
 test('GET /api/auth/users/classes/intensity', async () => {
@@ -128,6 +127,7 @@ test('GET, /api/auth/users/classes/instructor', async () => {
   console.log(response.body);
 
   expect(response.status).toBe(200);
+  expect.arrayContaining(response.body);
 });
 
 test('GET, /api/auth/users/classes/duration', async () => {
@@ -153,4 +153,5 @@ test('GET, /api/auth/users/classes/duration', async () => {
   console.log(response.body);
 
   expect(response.status).toBe(200);
+  expect.arrayContaining(response.body);
 });
