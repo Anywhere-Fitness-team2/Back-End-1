@@ -3,7 +3,8 @@ const db = require('../data/dbConfig');
 module.exports = {
   addClass,
   updateClass,
-  removeClass
+  removeClass,
+  getClassById
 };
 
 function addClass(data) {
@@ -31,4 +32,12 @@ function removeClass(id) {
     .from('class')
     .where({id})
     .del();
+}
+
+function getClassById(id) {
+  return db
+    .select('*')
+    .from('class')
+    .where({id})
+    .first();
 }
