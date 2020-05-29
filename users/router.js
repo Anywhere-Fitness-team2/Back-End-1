@@ -86,7 +86,7 @@ router.get('/instructor', (req, res) => {
 
   Users.getByInstructor(instructor_name)
     .then(clas => {
-      if (clas.length) {
+      if (clas) {
         res.status(200).json({data: clas});
       } else {
         res.status(404).json({message: 'could not find class by instructor'});
