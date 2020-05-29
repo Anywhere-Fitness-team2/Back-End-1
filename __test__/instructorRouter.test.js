@@ -40,6 +40,28 @@ test('POST /api/auth/instructor/classes', async () => {
   expect.arrayContaining(response.body);
 });
 
+test('/GET /api/auth/instructor/classes/:id', async () => {
+  const register = await request(server)
+    .post('/api/auth/register')
+    .send({
+      name: 'sun',
+      email: 'sun@gmail.com',
+      username: 'sun',
+      password: 'sun',
+      role: 'instructor'
+    });
+  const login = await request(server)
+    .post('/api/auth/login')
+    .send({username: 'sun', password: 'sun'});
+
+  const response = await request(server)
+    .get('/api/auth/instructor/classes/2')
+    .set('authorization', login.body.token);
+
+  expect(response.status).toBe(200);
+  expect.arrayContaining(response.body);
+});
+
 test('/DELETE /api/auth/instructor/classes/:id', async () => {
   const register = await request(server)
     .post('/api/auth/register')
