@@ -13,7 +13,7 @@ classes wherever they might be held.
 
 ## <a name="api-endpoints"></a>API endpoints
 
-### https://anytime-fitness.herokuapp.com
+### https://anywhere-fitness-team2.herokuapp.com/
 
 ### **_Authentication (for login)_**
 
